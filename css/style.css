@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(184, 180, 180);
+}
+.container{
+    display:flex;
+    flex-direction: row;
+    background-color: cadetblue;
+    border: 10px red;
+    justify-content:flex-start;
+}
+.child1{
+    display: flex;
+    background-color: brown;
+    border: 300px;
+    height: 300px;
+    width: 300px;
+}
+.child2{
+    display: flex;
+    background-color:chocolate;
+    border: 300px;
+    height: 300px;
+    width: 300px;
+}
+.child3{
+    display: flex;
+    background-color:darkmagenta;
+    border: 300px;
+    height: 300px;
+    width: 300px;
+}
+.child4{
+    display: flex;
+    background-color:deeppink;
+    border: 300px;
+    height: 300px;
+    width: 300px;
+}
