@@ -96,34 +96,60 @@
 //   const greeting = msgHandler(name, greetmsg);
 //   console.log(greeting);
 // });
-const myPromise = new Promise((resolve, reject) => {
-  const password = "789ghik";
-  if (password.length > 8) {
-    resolve("Password length is okay.");
-  } else {
-    reject("Password length does not meet our policy.");
-  }
-});
+// const myPromise = new Promise((resolve, reject) => {
+//   const password = "789ghik";
+//   if (password.length > 8) {
+//     resolve("Password length is okay.");
+//   } else {
+//     reject("Password length does not meet our policy.");
+//   }
+// });
 
-myPromise
-  .then((result) => {
-    console.log(result); // Logs: Password length is okay.
-  })
-  .catch((err) => {
-    console.log(err); // Logs: Password length does not meet our policy.
-  })
-  .finally(() => {
-    console.log("All resources have been closed successfully.");
+// myPromise
+//   .then((result) => {
+//     console.log(result); // Logs: Password length is okay.
+//   })
+//   .catch((err) => {
+//     console.log(err); // Logs: Password length does not meet our policy.
+//   })
+//   .finally(() => {
+//     console.log("All resources have been closed successfully.");
+//   });
+
+// function handleData() {
+//   myPromise
+//     .then((result) => {
+//       console.log(result); // Logs: Password length is okay.
+//     })
+//     .catch((err) => {
+//       console.log(err); // Logs: Password length does not meet our policy.
+//     });
+// }
+
+
+const button = document.getElementById('btn');
+const disp = document.getElementById('disp');
+let table=`<table border=1>`;
+async function fetchdata() {
+  disp.innerHTML = "<h2>data is loading...</h2>";
+  
+  const response = await fetch('https://dummyjson.com/recipes'); 
+  const jsondata = await response.json();
+
+  console.log(jsondata.recipes);
+
+  //disp.innerHTML = `<h2>${jsondata.recipes[0].name}</h2>`; 
+  jsondata.recipes.forEach(element => {
+    table+=`<tr>
+   <td><img src=${element.image} height=200 width=200 alt='image></td>
+    <td>${element.id}</td>
+    <td>${element.name}</td>
+    <td>${element.ingredients}</td>
+    </tr>`
+    
   });
-
-function handleData() {
-  myPromise
-    .then((result) => {
-      console.log(result); // Logs: Password length is okay.
-    })
-    .catch((err) => {
-      console.log(err); // Logs: Password length does not meet our policy.
-    });
+  table+=`</table>`;
+  disp.innerHTML=table;
 }
 
-handleData();
+button.addEventListener('click', fetchdata);
